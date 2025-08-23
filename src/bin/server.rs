@@ -29,16 +29,6 @@ async fn main() {
     }
 }
 
-// fn new_sharded_db(num_shards: usize) -> ShardedDb {
-//     let mut db = Vec::with_capacity(num_shards);
-
-//     for _ in 0..num_shards {
-//         db.push(Mutex::new(HashMap::new()));
-//     }
-
-//     Arc::new(db)
-// }
-
 async fn process(socket: TcpStream, db: Db) {
     let mut connection = Connection::new(socket);
 
@@ -63,3 +53,13 @@ async fn process(socket: TcpStream, db: Db) {
         connection.write_frame(&response).await.unwrap();
     }
 }
+
+// fn new_sharded_db(num_shards: usize) -> ShardedDb {
+//     let mut db = Vec::with_capacity(num_shards);
+
+//     for _ in 0..num_shards {
+//         db.push(Mutex::new(HashMap::new()));
+//     }
+
+//     Arc::new(db)
+// }
