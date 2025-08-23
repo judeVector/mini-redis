@@ -311,6 +311,15 @@ checksum = "32a282da65faaf38286cf3be983213fcf1d2e2a58700e808f83f4ea9a4804bc0"
 
 [[package]]
 name = "mini-redis"
+version = "0.1.0"
+dependencies = [
+ "bytes",
+ "mini-redis 0.4.1",
+ "tokio",
+]
+
+[[package]]
+name = "mini-redis"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "528890a6b63c88c9bda173867128abe62c0f5050dd959f067aeea09e90439f33"
@@ -344,14 +353,6 @@ dependencies = [
  "libc",
  "wasi",
  "windows-sys",
-]
-
-[[package]]
-name = "my-redis"
-version = "0.1.0"
-dependencies = [
- "mini-redis",
- "tokio",
 ]
 
 [[package]]
