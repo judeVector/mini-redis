@@ -18,9 +18,9 @@ The goal is to gradually build a simplified Redis clone while practicing core as
 ## 🛠️ Progress
 - [✅] Setup project structure  
 - [✅] Basic TCP server with Tokio  
-- [ ] Implement Redis protocol frame parsing  
-- [ ] Add command handling (e.g. `PING`, `SET`, `GET`)  
-- [ ] Manage state with an in-memory store  
+- [✅] Implement Redis protocol frame parsing  
+- [✅] Add command handling (e.g.`SET`, `GET`)  
+- [✅] Manage state with an in-memory store  
 
 ---
 
