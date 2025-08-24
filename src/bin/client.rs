@@ -14,7 +14,7 @@ async fn main() {
 
         let cmd = Command::Get {
             key: "foo".to_string(),
-            resp: resp_tx,
+            resp_tx,
         };
 
         tx.send(cmd).await.unwrap();
@@ -29,7 +29,7 @@ async fn main() {
         let cmd = Command::Set {
             key: "foo".to_string(),
             val: "bar".into(),
-            resp: resp_tx,
+            resp_tx,
         };
 
         tx2.send(cmd).await.unwrap();
@@ -45,15 +45,15 @@ async fn main() {
             use Command::*;
 
             match cmd {
-                Get { key, resp } => {
+                Get { key, resp_tx } => {
                     let res = client.get(&key).await;
 
-                    let _ = resp.send(res);
+                    let _ = resp_tx.send(res);
                 }
-                Set { key, val, resp } => {
+                Set { key, val, resp_tx } => {
                     let res = client.set(&key, val).await;
 
-                    let _ = resp.send(res);
+                    let _ = resp_tx.send(res);
                 }
             }
         }
@@ -68,11 +68,11 @@ async fn main() {
 enum Command {
     Get {
         key: String,
-        resp: Responder<Option<Bytes>>,
+        resp_tx: Responder<Option<Bytes>>,
     },
     Set {
         key: String,
         val: Bytes,
-        resp: Responder<()>,
+        resp_tx: Responder<()>,
     },
 }
